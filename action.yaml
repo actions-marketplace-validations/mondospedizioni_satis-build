@@ -14,12 +14,12 @@ runs:
   using: "composite"
   steps:
     - env:
-        COMPOSER_AUTH: '{"github-oauth": {"github.com": "${{ inputs.token }}"}}'
         COMPOSER_HOME: /tmp/.satis-build
       run: |
         mkdir /tmp/.satis-build
         echo "{}" > /tmp/.satis-build/composer.json
-
+        
+        composer g config github-oauth.github.com ${{ inputs.token }}
         composer g config allow-plugins.composer/satis true
         composer g require composer/satis:dev-main --prefer-dist \
           --no-cache --no-progress --no-interaction -o \
@@ -37,5 +37,5 @@ runs:
       shell: bash
 
 branding:
-  icon: 'download-cloud'
-  color: 'gray-dark'
+  icon: 'package'
+  color: 'purple'

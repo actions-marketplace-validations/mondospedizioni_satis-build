@@ -27,7 +27,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
-      - uses: dev-this/satis-build@v1
+      - uses: mondospedizioni/satis-build@v1
         with:
           token: ${{ GITHUB_TOKEN }} # App/OAuth token, PAT
       - env:
