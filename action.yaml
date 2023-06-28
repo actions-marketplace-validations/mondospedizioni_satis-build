@@ -21,12 +21,16 @@ runs:
         echo "{}" > /tmp/.satis-build/composer.json
         echo "{\"github-oauth\":{\"github.com\":\"${{ inputs.token }}\"}}" > /tmp/.satis-build/auth.json
         
+        cat /tmp/.satis-build/auth.json
+        
         composer g config github-oauth.github.com ${{ inputs.token }}
         composer g config allow-plugins.composer/satis true
         composer g require composer/satis:dev-main --prefer-dist \
           --no-cache --no-progress --no-interaction -o \
           --ignore-platform-reqs
 
+
+        cat /tmp/.satis-build/auth.json
         php $COMPOSER_HOME/vendor/bin/satis build ${{ inputs.satis_config }} -n
 
         if cat ${{ inputs.satis_config }} | jq .archive -e; then
