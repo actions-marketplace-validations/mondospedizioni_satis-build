@@ -19,7 +19,7 @@ runs:
       run: |
         mkdir /tmp/.satis-build
         echo "{}" > /tmp/.satis-build/composer.json
-        echo "{"github-oauth": {"github.com": "${{ inputs.token }}"}}" > /tmp/.satis-build/auth.json
+        echo "{"github-oauth":{"github.com":"${{ inputs.token }}"}}" > /tmp/.satis-build/auth.json
         
         composer g config github-oauth.github.com ${{ inputs.token }}
         composer g config allow-plugins.composer/satis true
