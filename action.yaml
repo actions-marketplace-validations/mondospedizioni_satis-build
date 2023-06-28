@@ -1,4 +1,4 @@
-name: 'Satis build - composer repository'
+name: 'Satis - Static Composer Repository Generator'
 description: 'Build a static composer repository using satis'
 
 inputs:
